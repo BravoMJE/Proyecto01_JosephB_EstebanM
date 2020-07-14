@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Servidor
 {
-    class Program
+    class Servidor
     {
         static void Main(string[] args)
         {

@@ -6,21 +6,32 @@ using System.Threading.Tasks;
 
 namespace Cliente
 {
-    abstract class Materia
+    class Materia
     {
         //declaracion de variables
         private string codigo;
         private string nombre;
         private int numMatricula;
         private int semestre;
+        private int pensum;
 
 
 
 
         //Getters y setters
-        protected string Codigo { get => codigo; set => codigo = value; }
-        protected string Nombre { get => nombre; set => nombre = value; }
-        protected int NumMatricula { get => numMatricula; set => numMatricula = value; }
-        protected int Semestre { get => semestre; set => semestre = value; }
+        public string Codigo { get => codigo; set => codigo = value; }
+        public string Nombre { get => nombre; set => nombre = value; }
+        public int NumMatricula { get => numMatricula; set => numMatricula = value; }
+        public int Semestre { get => semestre; set => semestre = value; }
+        public int Pensum { get => pensum; set => pensum = value; }
+
+        //Constructor
+        protected Materia(string codigo, string nombre, int numMatricula, int semestre, int pensum)
+        {
+            this.codigo = codigo;
+            this.nombre = nombre;
+            this.numMatricula = numMatricula;
+            this.semestre = semestre;
+            this.pensum = pensum;
+        }
     }
-}

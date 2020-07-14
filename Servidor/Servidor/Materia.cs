@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace Servidor
 {
-    abstract class Materia
+    class Materia
     {
         //declaracion de variables
-        protected string codigo;
-        protected string nombre;
-        protected int numMatricula;
-        protected int semestre;
+        private string codigo;
+        private string nombre;
+        private int numMatricula;
+        private int semestre;
+        private int pensum;
 
 
 
@@ -22,16 +23,18 @@ namespace Servidor
         public string Nombre { get => nombre; set => nombre = value; }
         public int NumMatricula { get => numMatricula; set => numMatricula = value; }
         public int Semestre { get => semestre; set => semestre = value; }
-
+        public int Pensum { get => pensum; set => pensum = value; }
 
         //Constructor
-        protected Materia(string codigo, string nombre, int numMatricula, int semestre)
+        protected Materia(string codigo, string nombre, int numMatricula, int semestre, int pensum)
         {
             this.codigo = codigo;
             this.nombre = nombre;
             this.numMatricula = numMatricula;
             this.semestre = semestre;
+            this.pensum = pensum;
         }
+
 
 
         
