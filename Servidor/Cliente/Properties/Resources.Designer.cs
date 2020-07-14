@@ -63,6 +63,26 @@ namespace Cliente.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_back_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-back-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_back_24__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-back-24 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_delete_25 {
             get {
                 object obj = ResourceManager.GetObject("icons8-delete-25", resourceCulture);
@@ -76,6 +96,16 @@ namespace Cliente.Properties {
         internal static System.Drawing.Bitmap icons8_delete_50 {
             get {
                 object obj = ResourceManager.GetObject("icons8-delete-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_forward_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-forward-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
