@@ -41,7 +41,7 @@ namespace Servidor
 
         public override string ToString()
         {
-            return "Estudiante: " + this.nombre + this.materiasConvalidadas;
+            return "Estudiante: " + this.nombre;
         }
 
     }

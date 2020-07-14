@@ -40,6 +40,9 @@ namespace Servidor
         }
 
 
-
+        public override string ToString()
+        {
+            return this.codigo+" "+this.nombre;
+        }
     }
 }

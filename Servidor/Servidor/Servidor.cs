@@ -31,10 +31,26 @@ namespace Servidor
             ConectarDB();
 
             RecuperarEstudiantes();
+
+            foreach (Estudiante i in estudiantes)
+            {
+                Console.WriteLine(i);
+            }
             RecuperarMaterias15();
+            RecuperarMaterias20();
+
+            foreach (Materia i in materias15)
+            {
+                Console.WriteLine(i);
+            }
+
+            foreach (Materia i in materias20)
+            {
+                Console.WriteLine(i);
+            }
 
 
-            
+
 
             Console.ReadLine();
         }
@@ -56,7 +72,7 @@ namespace Servidor
 
         static void RecuperarMaterias15()
         {
-            FirebaseResponse resMa = clienteDB.Get(@"ContMa");
+            FirebaseResponse resMa = clienteDB.Get(@"ContMa15");
             int counter = int.Parse(resMa.ResultAs<string>());
 
             for (int i = 1; i <= counter; i++)
@@ -69,7 +85,7 @@ namespace Servidor
 
         static void RecuperarMaterias20()
         {
-            FirebaseResponse resMa = clienteDB.Get(@"ContMa");
+            FirebaseResponse resMa = clienteDB.Get(@"ContMa20");
             int counter = int.Parse(resMa.ResultAs<string>());
 
             for (int i = 1; i <= counter; i++)
