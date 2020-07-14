@@ -14,7 +14,8 @@ namespace Servidor
 
         static IFirebaseClient clienteDB;
         static List<Estudiante> estudiantes = new List<Estudiante>();
-        static List<Materia> materias = new List<Materia>();
+        static List<Materia> materias15 = new List<Materia>();
+        static List<Materia> materias20 = new List<Materia>();
 
         static IFirebaseConfig config = new FirebaseConfig
         {
@@ -30,29 +31,7 @@ namespace Servidor
             ConectarDB();
 
             RecuperarEstudiantes();
-
-            foreach (Estudiante i in estudiantes)
-            {
-                Console.WriteLine(i);
-            }
-
-            //List<String> materiasAprovadas = new List<String>();
-            //materiasAprovadas.Add("ICO11");
-            //materiasAprovadas.Add("ADMD611");
-            //Estudiante e1 = new Estudiante(1, "Joseph Bravo", "0705760932", "joseph.bravo@epn.edu.ec", "1234",materiasAprovadas);
-            //Estudiante e2 = new Estudiante(2, "Mario Bravo", "0705760452", "mario.bravo@epn.edu.ec", "1234",materiasAprovadas);
-
-            //estudiantes.Add(e1);
-            //estudiantes.Add(e2);
-
-
-            //Materia m1 = new Materia(1,"MATR114","Algebra lineal",0,1,2015);
-            //Materia m2 = new Materia(1, "MATD113", "Algebra lineal", 0, 1,2020);
-
-
-            //var set = clienteDB.Set(@"Materia15/" + m1.IdMateria,m1);
-            //var set2 = clienteDB.Set(@"Materia20/" + m2.IdMateria,m2);
-
+            RecuperarMaterias15();
 
 
             
@@ -84,7 +63,20 @@ namespace Servidor
             {
                 var resMat = clienteDB.Get(@"Materia15/" + i);
                 Materia m = resMat.ResultAs<Materia>();
-                materias.Add(m);
+                materias15.Add(m);
+            }
+        }
+
+        static void RecuperarMaterias20()
+        {
+            FirebaseResponse resMa = clienteDB.Get(@"ContMa");
+            int counter = int.Parse(resMa.ResultAs<string>());
+
+            for (int i = 1; i <= counter; i++)
+            {
+                var resMat = clienteDB.Get(@"Materia15/" + i);
+                Materia m = resMat.ResultAs<Materia>();
+                materias20.Add(m);
             }
         }
 
