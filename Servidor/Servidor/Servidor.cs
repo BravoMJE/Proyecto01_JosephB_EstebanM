@@ -37,20 +37,19 @@ namespace Servidor
                 Console.WriteLine(i);
             }
             RecuperarMaterias15();
-            RecuperarMaterias20();
+            
 
             foreach (Materia i in materias15)
             {
                 Console.WriteLine(i);
             }
 
+            RecuperarMaterias20();
+
             foreach (Materia i in materias20)
             {
                 Console.WriteLine(i);
             }
-
-
-
 
             Console.ReadLine();
         }
