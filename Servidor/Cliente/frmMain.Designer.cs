@@ -241,7 +241,7 @@
             this.Controls.Add(this.listMatAprovadas);
             this.Controls.Add(this.listMaterias);
             this.Name = "frmMain";
-            this.Text = "Form1";
+            this.Text = "Main";
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
