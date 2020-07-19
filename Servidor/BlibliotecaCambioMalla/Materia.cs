@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cliente
+namespace BlibliotecaCambioMalla
 {
-    class Materia
+    public class Materia
     {
         //declaracion de variables
         private int idMateria;
@@ -39,7 +39,10 @@ namespace Cliente
             this.pensum = pensum;
         }
 
-        
 
+        public override string ToString()
+        {
+            return this.codigo+" "+this.nombre;
+        }
     }
 }

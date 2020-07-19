@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Servidor
+namespace BlibliotecaCambioMalla
 {
-    class Estudiante
+    //Hacemos nuestra clase serializable
+    [Serializable]
+    public class Estudiante
     {
         //Atributos
         private int idEstudiante;
@@ -41,7 +43,7 @@ namespace Servidor
 
         public override string ToString()
         {
-            return "Estudiante: " + this.nombre;
+            return "Estudiante: " + this.correo + "  " + this.contrasenia;
         }
 
     }

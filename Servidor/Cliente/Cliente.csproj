@@ -75,7 +75,6 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Materia.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="frmVerificacion.cs">
@@ -152,6 +151,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-back-24 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BlibliotecaCambioMalla\BlibliotecaCambioMalla.csproj">
+      <Project>{8ebff25f-56c0-48a8-8d6f-e55691a385e7}</Project>
+      <Name>BlibliotecaCambioMalla</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
