@@ -99,8 +99,13 @@ namespace Cliente
             Console.WriteLine(validacion);
             if (validacion.Equals("true"))
             {
+
+                byte[] listaMat = new byte[10024];
+                s_cliente.Receive(listaMat);
+
+                ListaMaterias materias2015 = (ListaMaterias)BinarySerialization.Deserializate(listaMat);
                 this.Hide();
-                frmMain frmMain = new frmMain();
+                frmMain frmMain = new frmMain(materias2015);
                 frmMain.Show();
             }
             else

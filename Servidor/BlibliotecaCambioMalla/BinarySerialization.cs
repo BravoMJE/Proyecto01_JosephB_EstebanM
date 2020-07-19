@@ -40,7 +40,10 @@ namespace BlibliotecaCambioMalla
             BinaryFormatter formatter = new BinaryFormatter();
 
             //se retorna un objeto a partir de el stream
-            return formatter.Deserialize(memory);
+            Object objDes = formatter.Deserialize(memory);
+
+
+            return objDes;
 
             
         }

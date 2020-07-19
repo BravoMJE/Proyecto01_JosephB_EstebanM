@@ -30,9 +30,9 @@
         {
             this.listMaterias = new System.Windows.Forms.ListBox();
             this.listMatAprovadas = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.cbxSemestre = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.cbxMatricula = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -68,14 +68,15 @@
             this.listMatAprovadas.Size = new System.Drawing.Size(260, 238);
             this.listMatAprovadas.TabIndex = 1;
             // 
-            // button1
+            // btnAdd
             // 
-            this.button1.Location = new System.Drawing.Point(518, 153);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 28);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAdd.Location = new System.Drawing.Point(518, 153);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 28);
+            this.btnAdd.TabIndex = 2;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // cbxSemestre
             // 
@@ -84,15 +85,16 @@
             this.cbxSemestre.Name = "cbxSemestre";
             this.cbxSemestre.Size = new System.Drawing.Size(152, 21);
             this.cbxSemestre.TabIndex = 3;
+            this.cbxSemestre.SelectedIndexChanged += new System.EventHandler(this.cbxSemestre_SelectedIndexChanged);
             // 
-            // button2
+            // btnRemove
             // 
-            this.button2.Location = new System.Drawing.Point(518, 235);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 28);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Remove";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnRemove.Location = new System.Drawing.Point(518, 235);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(75, 28);
+            this.btnRemove.TabIndex = 4;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -235,9 +237,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbxMatricula);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.cbxSemestre);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.listMatAprovadas);
             this.Controls.Add(this.listMaterias);
             this.Name = "frmMain";
@@ -256,9 +258,9 @@
 
         private System.Windows.Forms.ListBox listMaterias;
         private System.Windows.Forms.ListBox listMatAprovadas;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.ComboBox cbxSemestre;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbxMatricula;
         private System.Windows.Forms.Label label1;

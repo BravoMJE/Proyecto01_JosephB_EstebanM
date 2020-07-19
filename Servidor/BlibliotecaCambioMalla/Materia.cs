@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlibliotecaCambioMalla
 {
+    [Serializable]
     public class Materia
     {
         //declaracion de variables
@@ -42,7 +43,7 @@ namespace BlibliotecaCambioMalla
 
         public override string ToString()
         {
-            return this.codigo+" "+this.nombre;
+            return this.codigo+" "+this.nombre +" "+this.numMatricula;
         }
     }
 }

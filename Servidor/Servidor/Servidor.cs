@@ -29,12 +29,13 @@ namespace Servidor
         //Sockets
         Socket s_servidor;
         Socket s_cliente;
-        
+
 
         //listas de usuarios y materias
         static List<Estudiante> estudiantes = new List<Estudiante>();
-        static List<Materia> materias15 = new List<Materia>();
-        static List<Materia> materias20 = new List<Materia>();
+        static ListaMaterias materias15 = new ListaMaterias();
+        static ListaMaterias materias20 = new ListaMaterias();
+        
 
 
        
@@ -47,13 +48,10 @@ namespace Servidor
             //Inicio de conexion con la base de datos
             ConectarDB();
             RecuperarEstudiantes();
-
-            foreach (Estudiante i in estudiantes)
-            {
-                Console.WriteLine(i);
-            }
+            RecuperarMaterias15();
+            materias15.listar();
+            Console.WriteLine("Servidor listo");
             new Servidor();
-            
 
             Console.ReadLine();
         }
@@ -78,7 +76,7 @@ namespace Servidor
 
             while (true)
             {
-                //buffer = new byte[1024];
+                
 
                 //Inializamos el socket cliente
                 s_cliente = s_servidor.Accept();
@@ -90,10 +88,7 @@ namespace Servidor
                     hiloCliente.Start();
                 }
 
-                ////recibimos el buffer
-                //s_cliente.Receive(buffer);
-                //msj = Encoding.ASCII.GetString(buffer);
-                //Console.WriteLine("usuario y pass: " + msj);
+                
             }
             
         }
@@ -110,10 +105,6 @@ namespace Servidor
 
             while (true)
             {
-                //int cantidadBytesRecibidos = 0;
-                byte[] bytesRecibidos = new byte[1024];
-                
-
                 try
                 {
                     byte[] bufferRX = new byte[1024];
@@ -150,6 +141,7 @@ namespace Servidor
                     Console.WriteLine("correcto");
                     byte[] response = Encoding.ASCII.GetBytes("true");
                     s_cliente.Send(response);
+                    EnviarMaterias();
                     break;
                 }
                 else
@@ -163,6 +155,13 @@ namespace Servidor
 
 
         }
+
+        //metodo para enviar materias
+        public void EnviarMaterias()
+        {
+            s_cliente.Send(BinarySerialization.Serializate(materias15));
+        }
+
 
 
         //Metodos de recuperacion de informacion desde la 
@@ -259,7 +258,7 @@ namespace Servidor
                 Materia m = resMat.ResultAs<Materia>();
 
                 //Se añade la materia a la lista 
-                materias15.Add(m);
+                materias15.AggMaterias(m);
             }
         }
 
@@ -274,7 +273,7 @@ namespace Servidor
             {
                 var resMat = clienteDB.Get(@"Materia15/" + i);
                 Materia m = resMat.ResultAs<Materia>();
-                materias20.Add(m);
+                materias20.AggMaterias(m);
             }
         }
 
