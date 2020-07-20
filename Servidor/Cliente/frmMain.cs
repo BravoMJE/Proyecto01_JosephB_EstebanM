@@ -25,10 +25,14 @@ namespace Cliente
         public List<Materia> matApro = new List<Materia>();
         public List<Materia> matCon = new List<Materia>();
         public frmLogin frmLogPadre;
+        ListaMaterias matconvalidar = new ListaMaterias();
 
-
+        //Constructor formulario
+        //recibe la lista de materias y el formulario login para
+        //poder hacer las refencias a sus metodos y objetos
         public frmMain(ListaMaterias materias, frmLogin padre)
         {
+
             frmLogPadre = padre;
             materias2015 = materias;
             InitializeComponent();
@@ -38,7 +42,7 @@ namespace Cliente
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-
+            //creacion de sublistas de materias ordenadas por semestre
             mat15S1 = materias2015.BuscarPorSemestre(1).List;
             mat15S2 = materias2015.BuscarPorSemestre(2).List;
             mat15S3 = materias2015.BuscarPorSemestre(3).List;
@@ -47,15 +51,19 @@ namespace Cliente
             mat15S6 = materias2015.BuscarPorSemestre(6).List;
 
             
-
+            //Llamada al metodo llenar combo box
             LlenarCombo();
             cbxMatricula.DropDownStyle = ComboBoxStyle.DropDownList;
             cbxSemestre.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
+
+        //metodo que nos permite poblar los dos combobox presentes en el
+        //formulario con la informacion del semestre y numero de matricula
         private void LlenarCombo()
         {
             
+           
             String cbx1 = "1";
             String cbx2 = "2";
             String cbx3 = "3";
@@ -83,32 +91,42 @@ namespace Cliente
             cbxSemestre.SelectedIndex = 0;
         }
 
+
+        //Evento de boton aceptar
         private void btnAceptar_Click(object sender, EventArgs e)
         {
 
-            
-
-            
-            
-
+            //Intancia de la lista materias que el estudiante quiere 
+            //convalidar 
             ListaMaterias matVerificar = new ListaMaterias();
             matVerificar.List = matApro;
 
+            matVerificar.listar();
 
+            //envio de la lista de materias a convalidar al servidor
             frmLogPadre.iniciarEnvio(matVerificar);
 
+            System.Threading.Thread.Sleep(TimeSpan.FromSeconds(5));
+            
 
-            byte[] listaConvalidada = new byte[10024];
+            ////Recepcion de respuesta del servidor con las materias que fue posible 
+            ///convalidar
+            ///Agregar bloqueo
+
+            byte[] listaConvalidada = new byte[20024];
             frmLogPadre.s_cliente.Receive(listaConvalidada);
 
-            matCon = ((ListaMaterias)BinarySerialization.Deserializate(listaConvalidada)).List;
-
+            matconvalidar = (ListaMaterias)BinarySerialization.Deserializate(listaConvalidada);
+            matconvalidar.listar();
             
+            //Instancia del formulario de verificacion 
+            //Aqui se hara la verificacion de si se acaptan las
+            //materias que fueron convalidadas
             frmVerificacion frmVerificacion = new frmVerificacion(this);
             this.Hide();
             frmVerificacion.Show();
 
-            Console.WriteLine(matCon);
+            
         }
 
         private void cbxSemestre_SelectedIndexChanged(object sender, EventArgs e)
@@ -172,6 +190,7 @@ namespace Cliente
                 i.NumMatricula = int.Parse(cbxMatricula.SelectedItem.ToString());
                 matApro.Add(i);
             }
+
             ActualizarMatApro();
         }
 
@@ -184,6 +203,11 @@ namespace Cliente
             {
                 listMatAprovadas.Items.Add(i);
             }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

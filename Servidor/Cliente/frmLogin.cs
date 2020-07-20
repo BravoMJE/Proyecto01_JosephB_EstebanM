@@ -35,6 +35,8 @@ namespace Cliente
 
         }
 
+
+        //Metodo para salir de la aplicacion 
         private void btnSalir_Click_1(object sender, EventArgs e)
         {
 
@@ -84,26 +86,48 @@ namespace Cliente
             }
         }
 
+
+        //Boton ingresar con este evento se envia un objeto estudiante 
+        //que contiene las credenciales que se validaran en el servidor
+        //este devolvera la respuesta
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-
+            //Instancia de un estudiante vacio
             Estudiante es = new Estudiante();
+
+            //Se setea las variables ingresadas en el login al
+            //objeto estudiante
             es.Correo = txtUser.Text;
             es.Contrasenia = txtPass.Text;
+            
+            //Llamada al metodo iniciar envio de estudiante
             iniciarEnvio(es);
 
+            /*
+             * cambiar buffer por ahora solo con 4 bytes se necesita recortar
+            */
+
+            //recepcion de la validacion de las credenciales del estudiante por parte 
+            //del servidor
             byte[] bytesVerificacion = new byte[4];
-            //s_cliente.Receive(bytesVerificacion);
             s_cliente.Receive(bytesVerificacion);
+            //se hace el cast a un string para la validacion en la applicacion 
+            //del cliente
             string validacion = Encoding.ASCII.GetString(bytesVerificacion);
             Console.WriteLine(validacion);
             if (validacion.Equals("true"))
             {
-
+                //si la validacion es correcta el servidor envia la lista de materias
+                //correspondiente al pensum 2015
                 byte[] listaMat = new byte[10024];
                 s_cliente.Receive(listaMat);
 
+                //cast y asignacion de las materias recibidas desde el cliente
+                //se hace la llamada a deserializate para obtener un objeto
                 ListaMaterias materias2015 = (ListaMaterias)BinarySerialization.Deserializate(listaMat);
+                
+                //llamada al formulario main el cual permite seleccionar las materias al estudiante
+                //se le envia como parametro la lista de materias y el formulario login
                 frmMain frmMain = new frmMain(materias2015, this);
                 this.Hide();
                 frmMain.Show();
@@ -116,8 +140,11 @@ namespace Cliente
         }
 
 
+        //Metodo que nos permite realizar el envio de un objeto 
+        //hacia el servidor
         public void iniciarEnvio(Object obj)
         {
+            
             //Obtenemos un hostentry
             host = Dns.GetHostEntry("127.0.0.1");
             //Obtenemos la primera direccion de la lista
@@ -132,8 +159,6 @@ namespace Cliente
             s_cliente.Connect(endPoint);
 
             //creamos un buffer para la lectura desde el cliente
-            
-            //byte[] buffertx = Encoding.ASCII.GetBytes(msj);
 
             s_cliente.Send(BinarySerialization.Serializate(obj));
            
