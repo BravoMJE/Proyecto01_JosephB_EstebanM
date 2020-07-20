@@ -104,8 +104,8 @@ namespace Cliente
                 s_cliente.Receive(listaMat);
 
                 ListaMaterias materias2015 = (ListaMaterias)BinarySerialization.Deserializate(listaMat);
+                frmMain frmMain = new frmMain(materias2015, this);
                 this.Hide();
-                frmMain frmMain = new frmMain(materias2015);
                 frmMain.Show();
             }
             else
@@ -116,7 +116,7 @@ namespace Cliente
         }
 
 
-        public void iniciarEnvio(Estudiante es)
+        public void iniciarEnvio(Object obj)
         {
             //Obtenemos un hostentry
             host = Dns.GetHostEntry("127.0.0.1");
@@ -135,7 +135,7 @@ namespace Cliente
             
             //byte[] buffertx = Encoding.ASCII.GetBytes(msj);
 
-            s_cliente.Send(BinarySerialization.Serializate(es));
+            s_cliente.Send(BinarySerialization.Serializate(obj));
            
         }
 

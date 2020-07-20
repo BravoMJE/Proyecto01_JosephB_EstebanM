@@ -22,12 +22,13 @@ namespace Cliente
         List<Materia> mat15S4 = new List<Materia>();
         List<Materia> mat15S5 = new List<Materia>();
         List<Materia> mat15S6 = new List<Materia>();
-        List<Materia> matApro = new List<Materia>();
+        public List<Materia> matApro = new List<Materia>();
+        public frmLogin frmLogPadre;
 
 
-
-        public frmMain(ListaMaterias materias)
+        public frmMain(ListaMaterias materias, frmLogin padre)
         {
+            frmLogPadre = padre;
             materias2015 = materias;
             InitializeComponent();
         }
@@ -82,10 +83,18 @@ namespace Cliente
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
-        {            
-            frmVerificacion frmVerificacion = new frmVerificacion(this);
-            frmVerificacion.Show();
-            this.Hide();
+        {
+
+            ListaMaterias matVerificar = new ListaMaterias();
+            matVerificar.List = matApro;
+
+            frmLogPadre.iniciarEnvio(matVerificar);
+
+            //frmVerificacion frmVerificacion = new frmVerificacion(this);
+            //frmVerificacion.Show();
+            //this.Hide();
+
+
         }
 
         private void cbxSemestre_SelectedIndexChanged(object sender, EventArgs e)

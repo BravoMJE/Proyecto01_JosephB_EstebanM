@@ -35,12 +35,8 @@ namespace Servidor
         static List<Estudiante> estudiantes = new List<Estudiante>();
         static ListaMaterias materias15 = new ListaMaterias();
         static ListaMaterias materias20 = new ListaMaterias();
-        
-
-
-       
-
-        
+        static ListaMaterias matAConv = new ListaMaterias();
+        static ListaMaterias matConv = new ListaMaterias();
 
 
         static void Main(string[] args)
@@ -49,7 +45,9 @@ namespace Servidor
             ConectarDB();
             RecuperarEstudiantes();
             RecuperarMaterias15();
-            materias15.listar();
+            RecuperarMaterias20();
+
+            materias20.listar();
             Console.WriteLine("Servidor listo");
             new Servidor();
 
@@ -115,19 +113,41 @@ namespace Servidor
                     {
                         validarEstudiante((Estudiante)es);
                     }
-
-                    
-                    
+                    if (typeof(ListaMaterias).IsInstanceOfType(es))
+                    {
+                        ValidarMaterias((ListaMaterias)es);
+                    }
+ 
                 }
                 catch (Exception e)
                 {
 
-                    Console.WriteLine("Error: " + e);
+                    Console.WriteLine("Error: " + e); 
                 }
 
                 if (!sCliente.Connected)
                     break;
             }
+
+        }
+
+
+        public void ValidarMaterias(ListaMaterias lst)
+        {
+            matAConv = lst;
+            Console.WriteLine("Materias a convalidar");
+            Console.WriteLine("Espere ....");
+
+
+
+            //Algebra cod20 MATD113 cod15 MATR114
+            if ((matAConv.BuscarCod("MATR114")) != null)
+            {
+                matConv.AggMaterias(materias20.BuscarCod("MATD113"));
+            }
+
+
+            matConv.listar();
 
         }
 
@@ -271,7 +291,7 @@ namespace Servidor
 
             for (int i = 1; i <= counter; i++)
             {
-                var resMat = clienteDB.Get(@"Materia15/" + i);
+                var resMat = clienteDB.Get(@"Materia20/" + i);
                 Materia m = resMat.ResultAs<Materia>();
                 materias20.AggMaterias(m);
             }

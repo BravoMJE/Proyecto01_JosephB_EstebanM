@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BlibliotecaCambioMalla;
 
 namespace Cliente
 {
@@ -31,8 +32,24 @@ namespace Cliente
 
             if (dialogResult == DialogResult.Yes)
             {
-                Application.Exit();
+                this.Close();
             }
         }
+
+        private void frmVerificacion_Load(object sender, EventArgs e)
+        {
+            ActualizarMatAproV();
+        }
+
+
+        public void ActualizarMatAproV()
+        {
+            listFinal.Items.Clear();
+            foreach (Materia i in frmPadreObj.matApro)
+            {
+                listFinal.Items.Add(i);
+            }
+        }
+
     }
 }

@@ -42,6 +42,22 @@ namespace BlibliotecaCambioMalla
             return null;
         }
 
+
+        //Metodo buscar una materia dentro de la lista
+        //por codigo
+        public Materia BuscarCod(string cod)
+        {
+            foreach (Materia i in list)
+            {
+                if (i.Codigo.Equals(cod))
+                {
+                    return i;
+                }
+            }
+
+            return null;
+        }
+
         //metodo para eliminar una materia de una lista
         public void Eliminar(int id)
         {

@@ -55,22 +55,24 @@
             // listMaterias
             // 
             this.listMaterias.FormattingEnabled = true;
+            this.listMaterias.HorizontalScrollbar = true;
             this.listMaterias.Location = new System.Drawing.Point(188, 55);
             this.listMaterias.Name = "listMaterias";
-            this.listMaterias.Size = new System.Drawing.Size(260, 238);
+            this.listMaterias.Size = new System.Drawing.Size(328, 238);
             this.listMaterias.TabIndex = 0;
             // 
             // listMatAprovadas
             // 
             this.listMatAprovadas.FormattingEnabled = true;
-            this.listMatAprovadas.Location = new System.Drawing.Point(649, 55);
+            this.listMatAprovadas.HorizontalScrollbar = true;
+            this.listMatAprovadas.Location = new System.Drawing.Point(714, 55);
             this.listMatAprovadas.Name = "listMatAprovadas";
-            this.listMatAprovadas.Size = new System.Drawing.Size(260, 238);
+            this.listMatAprovadas.Size = new System.Drawing.Size(328, 238);
             this.listMatAprovadas.TabIndex = 1;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(518, 153);
+            this.btnAdd.Location = new System.Drawing.Point(583, 153);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 28);
             this.btnAdd.TabIndex = 2;
@@ -89,7 +91,7 @@
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(518, 235);
+            this.btnRemove.Location = new System.Drawing.Point(583, 235);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 28);
             this.btnRemove.TabIndex = 4;
@@ -100,7 +102,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(646, 28);
+            this.label2.Location = new System.Drawing.Point(711, 28);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(109, 13);
             this.label2.TabIndex = 6;
@@ -109,7 +111,7 @@
             // cbxMatricula
             // 
             this.cbxMatricula.FormattingEnabled = true;
-            this.cbxMatricula.Location = new System.Drawing.Point(518, 87);
+            this.cbxMatricula.Location = new System.Drawing.Point(583, 87);
             this.cbxMatricula.Name = "cbxMatricula";
             this.cbxMatricula.Size = new System.Drawing.Size(75, 21);
             this.cbxMatricula.TabIndex = 7;
@@ -138,7 +140,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(515, 71);
+            this.label4.Location = new System.Drawing.Point(580, 71);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(78, 13);
             this.label4.TabIndex = 10;
@@ -157,7 +159,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Cliente.Properties.Resources.icons8_back_24__1_;
-            this.pictureBox2.Location = new System.Drawing.Point(479, 235);
+            this.pictureBox2.Location = new System.Drawing.Point(544, 235);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(24, 28);
             this.pictureBox2.TabIndex = 15;
@@ -166,7 +168,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Cliente.Properties.Resources.icons8_forward_24;
-            this.pictureBox3.Location = new System.Drawing.Point(479, 153);
+            this.pictureBox3.Location = new System.Drawing.Point(544, 153);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(24, 28);
             this.pictureBox3.TabIndex = 14;
@@ -175,7 +177,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Cliente.Properties.Resources.icons8_forward_24;
-            this.pictureBox1.Location = new System.Drawing.Point(607, 153);
+            this.pictureBox1.Location = new System.Drawing.Point(672, 153);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(24, 28);
             this.pictureBox1.TabIndex = 12;
@@ -184,7 +186,7 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::Cliente.Properties.Resources.icons8_back_24__1_;
-            this.pictureBox4.Location = new System.Drawing.Point(607, 235);
+            this.pictureBox4.Location = new System.Drawing.Point(672, 235);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(24, 28);
             this.pictureBox4.TabIndex = 16;
@@ -192,7 +194,7 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(836, 311);
+            this.btnAceptar.Location = new System.Drawing.Point(967, 311);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 28);
             this.btnAceptar.TabIndex = 17;
@@ -204,7 +206,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(646, 319);
+            this.label6.Location = new System.Drawing.Point(711, 319);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(0, 13);
             this.label6.TabIndex = 18;
@@ -223,7 +225,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(928, 351);
+            this.ClientSize = new System.Drawing.Size(1054, 375);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnAceptar);

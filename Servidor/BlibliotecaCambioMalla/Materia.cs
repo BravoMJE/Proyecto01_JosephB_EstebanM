@@ -43,7 +43,7 @@ namespace BlibliotecaCambioMalla
 
         public override string ToString()
         {
-            return this.codigo+" "+this.nombre +" "+this.numMatricula;
+            return this.codigo+" -- "+this.nombre +" -- "+this.numMatricula;
         }
     }
 }
