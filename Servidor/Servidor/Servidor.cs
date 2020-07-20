@@ -143,10 +143,12 @@ namespace Servidor
             //Algebra cod20 MATD113 cod15 MATR114
             if ((matAConv.BuscarCod("MATR114")) != null)
             {
+                
                 matConv.AggMaterias(materias20.BuscarCod("MATD113"));
+                matConv.BuscarCod("MATD113").NumMatricula = matAConv.BuscarCod("MATR114").NumMatricula;
             }
 
-
+            s_cliente.Send(BinarySerialization.Serializate(matConv));
             matConv.listar();
 
         }

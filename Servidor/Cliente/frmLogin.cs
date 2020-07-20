@@ -26,7 +26,7 @@ namespace Cliente
 
         //Sockets
         Socket s_servidor;
-        Socket s_cliente;
+        public Socket s_cliente;
 
         public frmLogin()
         {

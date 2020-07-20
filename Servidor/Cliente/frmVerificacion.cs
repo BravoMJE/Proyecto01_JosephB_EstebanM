@@ -45,7 +45,7 @@ namespace Cliente
         public void ActualizarMatAproV()
         {
             listFinal.Items.Clear();
-            foreach (Materia i in frmPadreObj.matApro)
+            foreach (Materia i in frmPadreObj.matCon)
             {
                 listFinal.Items.Add(i);
             }

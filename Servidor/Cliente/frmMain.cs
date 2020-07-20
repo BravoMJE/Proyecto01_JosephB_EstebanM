@@ -23,6 +23,7 @@ namespace Cliente
         List<Materia> mat15S5 = new List<Materia>();
         List<Materia> mat15S6 = new List<Materia>();
         public List<Materia> matApro = new List<Materia>();
+        public List<Materia> matCon = new List<Materia>();
         public frmLogin frmLogPadre;
 
 
@@ -85,16 +86,29 @@ namespace Cliente
         private void btnAceptar_Click(object sender, EventArgs e)
         {
 
+            
+
+            
+            
+
             ListaMaterias matVerificar = new ListaMaterias();
             matVerificar.List = matApro;
 
+
             frmLogPadre.iniciarEnvio(matVerificar);
 
-            //frmVerificacion frmVerificacion = new frmVerificacion(this);
-            //frmVerificacion.Show();
-            //this.Hide();
 
+            byte[] listaConvalidada = new byte[10024];
+            frmLogPadre.s_cliente.Receive(listaConvalidada);
 
+            matCon = ((ListaMaterias)BinarySerialization.Deserializate(listaConvalidada)).List;
+
+            
+            frmVerificacion frmVerificacion = new frmVerificacion(this);
+            this.Hide();
+            frmVerificacion.Show();
+
+            Console.WriteLine(matCon);
         }
 
         private void cbxSemestre_SelectedIndexChanged(object sender, EventArgs e)
