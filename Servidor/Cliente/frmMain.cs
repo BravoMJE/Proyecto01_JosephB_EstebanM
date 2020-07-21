@@ -23,9 +23,10 @@ namespace Cliente
         List<Materia> mat15S5 = new List<Materia>();
         List<Materia> mat15S6 = new List<Materia>();
         public List<Materia> matApro = new List<Materia>();
-        public List<Materia> matCon = new List<Materia>();
+        public List<Materia> matCon;
         public frmLogin frmLogPadre;
-        ListaMaterias matconvalidar = new ListaMaterias();
+        public Boolean aceptacion;
+        
 
         //Constructor formulario
         //recibe la lista de materias y el formulario login para
@@ -95,40 +96,46 @@ namespace Cliente
         //Evento de boton aceptar
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-
+            matCon = new List<Materia>();
             //Intancia de la lista materias que el estudiante quiere 
             //convalidar 
             ListaMaterias matVerificar = new ListaMaterias();
             matVerificar.List = matApro;
 
-            matVerificar.listar();
+            //matVerificar.listar();
 
             //envio de la lista de materias a convalidar al servidor
             frmLogPadre.iniciarEnvio(matVerificar);
-
-            System.Threading.Thread.Sleep(TimeSpan.FromSeconds(5));
             
 
             ////Recepcion de respuesta del servidor con las materias que fue posible 
-            ///convalidar
-            ///Agregar bloqueo
 
-            byte[] listaConvalidada = new byte[20024];
+            byte[] listaConvalidada = new byte[10024];
             frmLogPadre.s_cliente.Receive(listaConvalidada);
 
-            matconvalidar = (ListaMaterias)BinarySerialization.Deserializate(listaConvalidada);
-            matconvalidar.listar();
-            
+            matCon = ((ListaMaterias)BinarySerialization.Deserializate(listaConvalidada)).List;
+
+
+
             //Instancia del formulario de verificacion 
             //Aqui se hara la verificacion de si se acaptan las
             //materias que fueron convalidadas
             frmVerificacion frmVerificacion = new frmVerificacion(this);
             this.Hide();
-            frmVerificacion.Show();
 
             
+            frmVerificacion.Show();
+            
+
+            
+
+
         }
 
+
+        //Evento combo box semestre
+        //llena el listview con la informacion correspondiente al 
+        //semestre seleccionado
         private void cbxSemestre_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(cbxSemestre.SelectedItem.Equals("Primer Semestre"))
@@ -182,6 +189,8 @@ namespace Cliente
 
         }
 
+
+        //Boton que nos permite añadir la materia seleccionada a 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             foreach (Materia i in listMaterias.SelectedItems)
@@ -207,7 +216,9 @@ namespace Cliente
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
+            matApro.Remove((Materia)listMatAprovadas.SelectedItem);
 
+            ActualizarMatApro();
         }
     }
 }

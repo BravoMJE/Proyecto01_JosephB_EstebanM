@@ -16,6 +16,9 @@ namespace Cliente
     public partial class frmLogin : Form
     {
 
+        //Variables
+        public Estudiante estudiante;
+
         //Variables para conexion TCP
         IPHostEntry host;
         IPAddress ipAddr;
@@ -25,7 +28,6 @@ namespace Cliente
         
 
         //Sockets
-        Socket s_servidor;
         public Socket s_cliente;
 
         public frmLogin()
@@ -100,6 +102,7 @@ namespace Cliente
             es.Correo = txtUser.Text;
             es.Contrasenia = txtPass.Text;
             
+            
             //Llamada al metodo iniciar envio de estudiante
             iniciarEnvio(es);
 
@@ -125,12 +128,32 @@ namespace Cliente
                 //cast y asignacion de las materias recibidas desde el cliente
                 //se hace la llamada a deserializate para obtener un objeto
                 ListaMaterias materias2015 = (ListaMaterias)BinarySerialization.Deserializate(listaMat);
+
+
+                //si la validacion es correcta el servidor envia el estudiante logueado
+                byte[] buffEstudiante = new byte[10024];
+                s_cliente.Receive(buffEstudiante);
+
+                //cast y asignacion de las materias recibidas desde el cliente
+                //se hace la llamada a deserializate para obtener un objeto
+                estudiante = (Estudiante)BinarySerialization.Deserializate(buffEstudiante);
+
+                if (estudiante.Convalidado)
+                {
+                    frmMateriasConvalidadas frmConva = new frmMateriasConvalidadas(this);
+                    this.Hide();
+                    frmConva.Show();
+                }
+                else
+                {
+                    //llamada al formulario main el cual permite seleccionar las materias al estudiante
+                    //se le envia como parametro la lista de materias y el formulario login
+                    frmMain frmMain = new frmMain(materias2015, this);
+                    this.Hide();
+                    frmMain.Show();
+                }
+
                 
-                //llamada al formulario main el cual permite seleccionar las materias al estudiante
-                //se le envia como parametro la lista de materias y el formulario login
-                frmMain frmMain = new frmMain(materias2015, this);
-                this.Hide();
-                frmMain.Show();
             }
             else
             {

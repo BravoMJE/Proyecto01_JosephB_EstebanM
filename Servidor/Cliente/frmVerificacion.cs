@@ -32,12 +32,24 @@ namespace Cliente
 
             if (dialogResult == DialogResult.Yes)
             {
-                this.Close();
+                btnSalir.Visible = true;
+                btnVolver.Visible = false;
+                btnAceptar.Visible = false;
+                lblAcuerdo.Visible = false;
+                frmPadreObj.aceptacion = true;
+
+                frmPadreObj.frmLogPadre.estudiante.Convalidado = true;
+                ListaMaterias materiasConvalidadas = new ListaMaterias();
+                materiasConvalidadas.List = frmPadreObj.matCon;
+                frmPadreObj.frmLogPadre.estudiante.MateriasConvalidadas = materiasConvalidadas;
+                frmPadreObj.frmLogPadre.iniciarEnvio(frmPadreObj.frmLogPadre.estudiante);
+                
             }
         }
 
         private void frmVerificacion_Load(object sender, EventArgs e)
         {
+            btnSalir.Visible = false;
             ActualizarMatAproV();
         }
 
@@ -51,5 +63,10 @@ namespace Cliente
             }
         }
 
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            //frmPadreObj.frmLogPadre.s_cliente.Close();
+            Application.Exit();
+        }
     }
 }

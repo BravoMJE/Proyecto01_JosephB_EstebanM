@@ -32,7 +32,8 @@
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblAcuerdo = new System.Windows.Forms.Label();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listFinal
@@ -45,7 +46,7 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(266, 361);
+            this.btnAceptar.Location = new System.Drawing.Point(280, 361);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 1;
@@ -73,22 +74,33 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "Materias  Convalidadas";
             // 
-            // label2
+            // lblAcuerdo
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(151, 326);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(162, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Si esta deacuerdo pulse enviar";
+            this.lblAcuerdo.AutoSize = true;
+            this.lblAcuerdo.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAcuerdo.Location = new System.Drawing.Point(151, 326);
+            this.lblAcuerdo.Name = "lblAcuerdo";
+            this.lblAcuerdo.Size = new System.Drawing.Size(162, 13);
+            this.lblAcuerdo.TabIndex = 10;
+            this.lblAcuerdo.Text = "Si esta deacuerdo pulse enviar";
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Location = new System.Drawing.Point(199, 361);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(75, 23);
+            this.btnSalir.TabIndex = 11;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // frmVerificacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(475, 424);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnSalir);
+            this.Controls.Add(this.lblAcuerdo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.btnAceptar);
@@ -107,6 +119,7 @@
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblAcuerdo;
+        private System.Windows.Forms.Button btnSalir;
     }
 }

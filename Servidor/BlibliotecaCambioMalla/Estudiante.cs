@@ -16,7 +16,8 @@ namespace BlibliotecaCambioMalla
         private String cedula;
         private String correo;
         private String contrasenia;
-        private List<String> materiasConvalidadas;
+        private ListaMaterias materiasConvalidadas;
+        private Boolean convalidado;
 
 
         //getters y setters
@@ -25,9 +26,10 @@ namespace BlibliotecaCambioMalla
         public string Cedula { get => cedula; set => cedula = value; }
         public string Correo { get => correo; set => correo = value; }
         public string Contrasenia { get => contrasenia; set => contrasenia = value; }
-        public List<string> MateriasConvalidadas { get => materiasConvalidadas; set => materiasConvalidadas = value; }
+        public ListaMaterias MateriasConvalidadas { get => materiasConvalidadas; set => materiasConvalidadas = value; }
+        public bool Convalidado { get => convalidado; set => convalidado = value; }
 
-        public Estudiante(int idEstudiante, string nombre, string cedula, string correo, string contrasenia, List<string> materiasConvalidadas)
+        public Estudiante(int idEstudiante, string nombre, string cedula, string correo, string contrasenia, ListaMaterias materiasConvalidadas, Boolean convalidado)
         {
             this.idEstudiante = idEstudiante;
             this.nombre = nombre;
@@ -35,6 +37,7 @@ namespace BlibliotecaCambioMalla
             this.correo = correo;
             this.contrasenia = contrasenia;
             this.materiasConvalidadas = materiasConvalidadas;
+            this.convalidado = convalidado;
         }
 
         public Estudiante()
