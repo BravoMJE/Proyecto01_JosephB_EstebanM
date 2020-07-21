@@ -74,13 +74,29 @@ namespace Servidor
             //Instanciamos un socket servidor con TCP
             s_servidor = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
-            s_servidor.Bind(endPoint);
-            s_servidor.Listen(10);
 
+
+            s_servidor.Bind(endPoint);
+
+            Thread hiloEscucha = new Thread(new ThreadStart(Escuchar));
+            hiloEscucha.IsBackground = true;
+            hiloEscucha.Start();
+
+
+
+            
+            
+        }
+
+
+
+        public void Escuchar()
+        {
             //bucle que nos permite aceptar multiples usuarios
             while (true)
             {
-                
+                //Metodo del hilo que esta a la escucha de nuevos clientes
+                s_servidor.Listen(-1);
 
                 //Inializamos el socket cliente
                 s_cliente = s_servidor.Accept();
@@ -91,15 +107,14 @@ namespace Servidor
                     //Se instancia un hilo por cada cliente que se conecta
                     //pasandole el delegado con el metodo recibir
                     Thread hiloCliente = new Thread(new ThreadStart(Recibir));
-                    
+
                     //Este hilo se ejecuta en segundo plano
                     hiloCliente.IsBackground = true;
                     hiloCliente.Start();
                 }
 
-                
+
             }
-            
         }
 
 
@@ -160,10 +175,11 @@ namespace Servidor
                     }
  
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
 
-                    Console.WriteLine("Error: " + e); 
+                    Console.WriteLine("Cliente ha salido");
+                    
                 }
 
                 if (!sCliente.Connected)
