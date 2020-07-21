@@ -123,8 +123,8 @@ namespace Servidor
             //bucle que recibe varios mensajes del cliente 
             while (true)
             {
-                //try
-                //{
+                try
+                {
 
                     //declarion del buffer que nos permite almacenar lo enviado 
                     //por el cliente
@@ -150,12 +150,12 @@ namespace Servidor
                         ValidarMaterias((ListaMaterias)obj);
                     }
  
-                //}
-                //catch (Exception e)
-                //{
+                }
+                catch (Exception e)
+                {
 
-                //    Console.WriteLine("Error: " + e); 
-                //}
+                    Console.WriteLine("Error: " + e); 
+                }
 
                 if (!sCliente.Connected)
                     break;
