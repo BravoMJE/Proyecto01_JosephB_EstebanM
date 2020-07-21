@@ -214,6 +214,11 @@ namespace Cliente
             }
         }
 
+
+
+        //Evento que nos permite eliminar una materia 
+        //que ha sido previamente añadida a lista de materias a
+        //convalidar
         private void btnRemove_Click(object sender, EventArgs e)
         {
             matApro.Remove((Materia)listMatAprovadas.SelectedItem);

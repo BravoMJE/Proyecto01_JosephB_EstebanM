@@ -38,10 +38,16 @@ namespace Cliente
                 lblAcuerdo.Visible = false;
                 frmPadreObj.aceptacion = true;
 
+
+                //se establece el atributo del usuario convalidado 
+                //en verdadero 
                 frmPadreObj.frmLogPadre.estudiante.Convalidado = true;
                 ListaMaterias materiasConvalidadas = new ListaMaterias();
                 materiasConvalidadas.List = frmPadreObj.matCon;
+                
+                //Agregamos las materias convalidadas al estudiante logueado
                 frmPadreObj.frmLogPadre.estudiante.MateriasConvalidadas = materiasConvalidadas;
+                //se envia el estudiante con las materias convalidadas al servidor
                 frmPadreObj.frmLogPadre.iniciarEnvio(frmPadreObj.frmLogPadre.estudiante);
                 
             }
@@ -54,6 +60,7 @@ namespace Cliente
         }
 
 
+        //Carga las materias convalidadas por el servidor
         public void ActualizarMatAproV()
         {
             listFinal.Items.Clear();

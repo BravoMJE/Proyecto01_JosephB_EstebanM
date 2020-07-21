@@ -106,10 +106,6 @@ namespace Cliente
             //Llamada al metodo iniciar envio de estudiante
             iniciarEnvio(es);
 
-            /*
-             * cambiar buffer por ahora solo con 4 bytes se necesita recortar
-            */
-
             //recepcion de la validacion de las credenciales del estudiante por parte 
             //del servidor
             byte[] bytesVerificacion = new byte[4];
@@ -138,8 +134,13 @@ namespace Cliente
                 //se hace la llamada a deserializate para obtener un objeto
                 estudiante = (Estudiante)BinarySerialization.Deserializate(buffEstudiante);
 
+                ///Validacion de aceptacion del estudiante
                 if (estudiante.Convalidado)
                 {
+
+                    //si es verdadero se instancia un formulario materias 
+                    //convalidadas donde se muestran las materias convalidadas
+                    //del estudiante 
                     frmMateriasConvalidadas frmConva = new frmMateriasConvalidadas(this);
                     this.Hide();
                     frmConva.Show();

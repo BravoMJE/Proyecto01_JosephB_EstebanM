@@ -24,10 +24,14 @@ namespace Cliente
 
         private void frmMateriasConvalidadas_Load(object sender, EventArgs e)
         {
+
+            //Llamada al metodo actualizar materias
             ActualizarMatConv();
         }
 
 
+
+        //Llena el list view con las materias del estudiante logueado
         public void ActualizarMatConv()
         {
             listFinal.Items.Clear();

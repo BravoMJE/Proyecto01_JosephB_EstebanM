@@ -1,4 +1,29 @@
-﻿using System;
+﻿// ************************************************************************
+// Proyecto 01
+// Joseph Bravo, Esteban Machado
+// Fecha de realizacion: 21/07/2020
+// Fecha de entrega: 22/07/2020
+// Resultados:
+// * La siguiente solucion nos permite hacer la convalidacion de materias
+//   del pensum 2015 hacia el pensum 2020 mediante el uso de sockets, 
+//   ademas se usa hilos para manejar a varios clientes, como base de datos se
+//   uso una base de datos no relacional en linea de donde se recuperaran 
+//   los estudiantes y las materias de los dos pensum.
+//   Para el intercambio de datos entre servidor y cliente se uso la 
+//   serializacion de objetos 
+// Conclusiones:
+// * Se verifico la importancia del uso de hilos para la asignacion 
+//   de diferentes funcionalidades
+// * El comprobo que LOCK es importante ya que permite evitar conflictos
+//   cuando se pueden ejecutar varios hilos y estos manejan recursos comportidos
+// * La serializacion de objetos ayuda a que estos sean enviables a travez de TCP
+//   en este caso.
+// Recomendaciones:
+//*Verificar la disponibilidad de los puertos a usar y cerrarlos al momento de 
+//terminar el uso
+// ************************************************************************
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -78,6 +103,9 @@ namespace Servidor
 
             s_servidor.Bind(endPoint);
 
+
+            //se instancia un hilo que estara a la escucha 
+            //de nuevos clientes
             Thread hiloEscucha = new Thread(new ThreadStart(Escuchar));
             hiloEscucha.IsBackground = true;
             hiloEscucha.Start();
@@ -157,12 +185,15 @@ namespace Servidor
                         //estudiante
                         if (((Estudiante)obj).Convalidado)
                         {
-                            Console.WriteLine("if convalidado a true");
-                            ActulizarInforEstudiante((Estudiante)obj);
+                            //Si el estudiante setea convalidado
+                            //se procede a llamar al metodo actualizar informacion
+                            //del estudiante en la base de datos
+                            ActualizarInforEstudiante((Estudiante)obj);
                         }
                         else
                         {
-                            Console.WriteLine("if convalidado a false");
+                            //si el atributo convalidado del estudiante es falso
+                            //se procede a validar las credenciales del estudiante
                             validarEstudiante((Estudiante)obj);
                         }
                         
@@ -190,8 +221,9 @@ namespace Servidor
 
         }
 
-        public void ActulizarInforEstudiante(Estudiante es)
+        public void ActualizarInforEstudiante(Estudiante es)
         {
+            //Se envia la informacion actualiza a la base de datos
             var set = clienteDB.Set(@"Estudiante/" + es.IdEstudiante, es);
         }
 
@@ -200,7 +232,6 @@ namespace Servidor
         {
             matAConv = lst;
             Console.WriteLine("Materias a convalidar");
-            Console.WriteLine("Espere ....");
             matConv = new ListaMaterias();
 
             //////////////////////////////////////////////////
@@ -591,7 +622,7 @@ namespace Servidor
 
 
 
-            Console.WriteLine("se termino la convalidacion");
+            
 
 
             //Serializacion de lista de materias convalidadas y envio hacia el cliente
@@ -616,7 +647,6 @@ namespace Servidor
                 {
                     vali = true;
                     //Si las credenciales coinciden se envia una respuesta positiva al cliente
-                    Console.WriteLine("Estudiante logueado correctamente");
                     byte[] response = Encoding.ASCII.GetBytes("true");
                     s_cliente.Send(response);
 
@@ -632,7 +662,6 @@ namespace Servidor
             //Si las credenciales no coinciden se envia una respuesta negativa al cliente
             if (vali == false)
             {
-                Console.WriteLine("incorrecto");
                 byte[] response1 = Encoding.ASCII.GetBytes("false");
                 s_cliente.Send(response1);
             }
