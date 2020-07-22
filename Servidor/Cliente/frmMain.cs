@@ -51,6 +51,7 @@ namespace Cliente
             mat15S5 = materias2015.BuscarPorSemestre(5).List;
             mat15S6 = materias2015.BuscarPorSemestre(6).List;
 
+            lblNombre.Text = frmLogPadre.estudiante.Correo; 
             
             //Llamada al metodo llenar combo box
             LlenarCombo();
@@ -190,7 +191,7 @@ namespace Cliente
         }
 
 
-        //Boton que nos permite añadir la materia seleccionada a 
+        //Boton que nos permite añadir la materia seleccionada al siguiente ListBox
         private void btnAdd_Click(object sender, EventArgs e)
         {
             foreach (Materia i in listMaterias.SelectedItems)

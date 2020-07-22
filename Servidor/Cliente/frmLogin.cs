@@ -116,6 +116,7 @@ namespace Cliente
             Console.WriteLine(validacion);
             if (validacion.Equals("true"))
             {
+
                 //si la validacion es correcta el servidor envia la lista de materias
                 //correspondiente al pensum 2015
                 byte[] listaMat = new byte[10024];
@@ -147,6 +148,8 @@ namespace Cliente
                 }
                 else
                 {
+                    
+
                     //llamada al formulario main el cual permite seleccionar las materias al estudiante
                     //se le envia como parametro la lista de materias y el formulario login
                     frmMain frmMain = new frmMain(materias2015, this);
