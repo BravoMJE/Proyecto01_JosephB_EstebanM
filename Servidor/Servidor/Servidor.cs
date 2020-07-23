@@ -14,13 +14,20 @@
 // Conclusiones:
 // * Se verifico la importancia del uso de hilos para la asignacion 
 //   de diferentes funcionalidades
-// * El comprobo que LOCK es importante ya que permite evitar conflictos
+// * Se comprobo que LOCK es importante ya que permite evitar conflictos
 //   cuando se pueden ejecutar varios hilos y estos manejan recursos comportidos
 // * La serializacion de objetos ayuda a que estos sean enviables a travez de TCP
 //   en este caso.
+//
 // Recomendaciones:
-//*Verificar la disponibilidad de los puertos a usar y cerrarlos al momento de 
-//terminar el uso
+//•	El uso de base de datos no relacionales no es muy popular en nuestro medio como estudiantes, 
+//  pero el investigar sobre nuevas tecnologías o diferentes formas de hacer las cosas pueden ayudarnos 
+//  a ganar experiencia y abrir la mente hacia cosas nuevas.
+//
+//* Pair programming es una técnica interesante donde dos programadores implementan un solo código es decir
+//  uno programa y el otro aporta con ideas dentro de la programación esto puede ayudar muchísimo en caso de 
+//  que uno se bloque el otro puede ver los errores y aportar a avanzar más rápido.
+//
 // ************************************************************************
 
 using System;
