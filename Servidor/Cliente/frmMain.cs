@@ -116,20 +116,13 @@ namespace Cliente
 
             matCon = ((ListaMaterias)BinarySerialization.Deserializate(listaConvalidada)).List;
 
-
-
             //Instancia del formulario de verificacion 
             //Aqui se hara la verificacion de si se acaptan las
             //materias que fueron convalidadas
             frmVerificacion frmVerificacion = new frmVerificacion(this);
             this.Hide();
-
             
             frmVerificacion.Show();
-            
-
-            
-
 
         }
 

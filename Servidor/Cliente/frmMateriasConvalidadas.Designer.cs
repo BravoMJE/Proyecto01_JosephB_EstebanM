@@ -70,7 +70,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listFinal);
             this.Name = "frmMateriasConvalidadas";
-            this.Text = "frmMateriasConvalidadas";
+            this.Text = "Materias Convalidadas";
             this.Load += new System.EventHandler(this.frmMateriasConvalidadas_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

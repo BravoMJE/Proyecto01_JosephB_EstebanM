@@ -110,10 +110,6 @@ namespace Servidor
             hiloEscucha.IsBackground = true;
             hiloEscucha.Start();
 
-
-
-            
-            
         }
 
 
